@@ -12,6 +12,7 @@ async function connect() {
     const channel = await connection.createChannel();
     channel.assertQueue(queue, { durable: false });
     channel.sendToQueue(queue, Buffer.from(payload));
+    console.log(`message sent ${message}`);
     setTimeout(() => {
       connection.close();
       process.exit(0);
